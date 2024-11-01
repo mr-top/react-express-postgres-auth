@@ -5,7 +5,7 @@ import axios from 'axios';
 function App() {
 
   function handleButtonClick(e){
-    axios.get('http://localhost:5001/button').then(result => console.log(result)).catch(error => console.log(error));
+    axios.get('http://localhost:5000/button').then(result => console.log(result)).catch(error => console.log(error));
   }
 
   return (

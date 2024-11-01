@@ -9,7 +9,7 @@ function Login () {
 
   function handleFormSubmit(e){
     e.preventDefault();
-    axios.post('http://localhost:5001/login', {username, password})
+    axios.post('http://localhost:5000/login', {username, password})
     .then((result) => {console.log(result)})
     .catch((error) => {console.log(error)});
   }

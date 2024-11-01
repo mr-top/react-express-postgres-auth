@@ -1,14 +1,16 @@
 const Client = require('pg').Client;
+require('dotenv').config();
+const ENV = process.env;
 
 async function query (statement, ...args) {
   let result;
   try {
     const dbInstance = new Client({
-      host: 'localhost',
-      database: 'test1',
-      user: 'admin',
-      password: '5559',
-      port: '5432'
+      host: ENV.DB_ADDR,
+      database: ENV.DB,
+      user: ENV.DB_USER,
+      password: ENV.DB_PASS,
+      port: ENV.DB_PORT
     });
 
     await dbInstance.connect()

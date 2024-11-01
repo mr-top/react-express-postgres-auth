@@ -2,7 +2,10 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
+
 const PostgresSession = require('./lib/pg-session.js');
+
 require('dotenv').config();
 const ENV = process.env;
 
@@ -10,11 +13,13 @@ const db = new PostgresSession();
 
 const app = express();
 
+app.use(express.json());
 app.use(cors({
-  origin: `http://localhost:5173`,
+  origin: `${ENV.FRONT_ADDR}:${ENV.FRONT_PORT}`,
   methods: ['GET', 'POST'],
   credentials: true
 }));
+app.use(cookieParser());
 app.use(session(
   {
     key: 'test-cookie-key',
@@ -28,7 +33,6 @@ app.use(session(
   }
 ))
 app.use(morgan('common'));
-app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('Hello!!')
