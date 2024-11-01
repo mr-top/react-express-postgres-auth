@@ -17,7 +17,7 @@ function Register (props) {
   return (
     <>
 
-      <h1>Welcome to the Login component</h1>
+      <h1>Welcome to the Register component</h1>
       <form onSubmit={handleFormSubmit}>
         <input onChange={(e) => {setUsername(e.target.value)}} value={username} placeholder='username'>
           
